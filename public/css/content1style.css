@@ -1,0 +1,10 @@
+.content-1 {
+	display: grid;
+	grid-template-columns: 50% 50%;
+	width: 85%;
+	margin: 20% auto;
+}
+
+.text p {
+	display: none;
+}

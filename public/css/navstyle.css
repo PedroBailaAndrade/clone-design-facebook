@@ -1,5 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap');
 
+body {
+	width: 100vw; 
+	height: 150vh; 
+	margin: 0px; 
+	background-color: #FCEBEB;
+}
+
 nav {
 	display: grid;
 	grid-template-columns: 50% 50%;
@@ -8,6 +15,7 @@ nav {
 	top: 0;
     width: 100vw;
     transition: top 1s;
+    z-index: 1;
 }
 
 nav div.logo {
@@ -50,8 +58,79 @@ nav div.tabs {
 	font-size: 18px;
 }
 
-.tabs p:hover {
-	border-bottom: solid 2px black;
-	transition: border-width 0.6s linear;
-	border-width: 10px;
+.tabs .underline:after {
+	content: '';
+	display: block;
+	width: 0;
+	height: 2px;
+	transition: width 0.3s;
+}
+
+.tabs .underline:hover:after {
+	width: 100%;
+	transition: width 0.3s;
+}
+
+.down .underline:after {
+	background-color: #000;
+}
+
+.up .underline:after {
+	background-color: #67788a;
+}
+
+.tabs .tab-menu {
+	display: none;
+}
+
+.tab-menu-child {
+	display: none;
+}
+
+@media only screen and (max-width: 900px) {
+	.tabs .underline {
+		display: none;
+	}
+
+	.tabs .tab-menu {
+		display: block;
+		font-size: 23px;
+    	margin: 1em 0;
+    	cursor: pointer;
+	}
+
+	.down .tab-menu {
+		color: #000;
+	}
+
+	.up .tab-menu {
+		color: #67788a;
+	}
+
+	.tab-menu-child {
+		position: absolute;
+		width: 100vw;
+		height: 100vh;
+		background-color: #344854;
+		color: #fff;
+	}
+
+	.tab-menu-child p {
+		font-family: 'Montserrat', sans-serif;
+		font-weight: 400;
+		font-size: 26px;
+		text-align: center;
+		margin: 10% auto;
+	}
+
+	.tab-menu-child p:first-of-type {
+		margin-top: 25vh;
+	}
+
+	.close-menu {
+		cursor: pointer;
+		font-size: 45px;
+		float: right;
+		margin: 8% 8% 0 0;
+	}
 }
