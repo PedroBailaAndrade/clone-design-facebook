@@ -29,15 +29,14 @@ nav div.logo {
 .logo p {
 	margin: 1em 1em 1em auto;
 	cursor: pointer;
+	font-size: 20px;
+	line-height: 28px;
 	font-family: 'Montserrat', sans-serif;
 	font-weight: 500;
-	font-size: 22px;
-	text-transform: uppercase;
 }
 
 .logo span {
 	font-weight: 400;
-	font-size: 22px;
 	text-transform: none;
 }
 
@@ -55,7 +54,8 @@ nav div.tabs {
 	cursor: pointer;
 	font-family: 'Montserrat', sans-serif;
 	font-weight: 400;
-	font-size: 18px;
+	font-size: 20px;
+	line-height: 28px;
 }
 
 .tabs .underline:after {
