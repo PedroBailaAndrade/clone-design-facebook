@@ -1,48 +1,50 @@
 window.addEventListener('load', function () {
-	var scroll = document.getElementsByClassName("scroll")[0];
-	var fixedHeight = document.getElementsByClassName("fixed")[0].offsetHeight;
 	
+	var scroll = document.getElementsByClassName("scroll")[0];
 	var scrolling = document.getElementsByClassName("scrolling");
-	var width = [];
-	var height = [];
 
-	for (i = 0; i < scrolling.length; i++) {
-		width.push(scrolling[i].offsetWidth);
-		height.push(scrolling[i].offsetHeight);
-	}
-	width = Math.max(...width);
-	height = Math.max(...height);
+	setDimension(scroll, string(width), setWidth(scrolling));
+	setDimension(scroll, string(height), setHeight(scrolling));
 
-	function initialPosition(array) {
+	initialPosition(scrolling, setHeight(scrolling));
+
+	setInterval(function(){
+			movePostion(scrolling, setHeight(scrolling));
+			if(scrolling[0].offsetTop == - setHeight(scrolling) * scrolling.length) {
+				initialPosition(scrolling, setHeight(scrolling));
+			} ;
+	}, 1000);
+
+	function setWidth(array) {
+		var values = [];
 		for (i = 0; i < array.length; i++) {
-			array[i].style.top = height*i + "px";
+			values.push(array[i].offsetWidth);
+		}
+		return value = Math.max(...values);
+	};
+
+	function setHeight(array) {
+		var values = [];
+		for (i = 0; i < array.length; i++) {
+			values.push(array[i].offsetHeight);
+		}
+		return value = Math.max(...values);
+	};
+
+	function setDimension(element, side, size) {
+		element.style.side = size + "px";
+		console.log(element.style.side = size+ "px")
+	}
+
+	function initialPosition(array, height) {
+		for (i = 0; i < array.length; i++) {
+			array[i].style.top = height * i + "px";
 		}
 	};
 
-	initialPosition(scrolling);
-
-	scroll.style.height = height + "px";
-	scroll.style.width = width + "px";
-
-	setInterval(function(){
-		scrolling = Array.from(scrolling);
-		scrolling.forEach(function(item){
-			item.style.top = (item.offsetTop - height) + "px";
-			if(scrolling[0].offsetTop == -height*scrolling.length) {
-				initialPosition(scrolling);
-				// var lastItemIndex = scrolling.length - 1;
-				// var lastItem = scrolling[lastItemIndex];
-				// var lastItemPosition = lastItem.offsetTop;
-
-				// var firstItem = scrolling[0];
-				// firstItem.style.top = lastItemPosition + height + "px";
-
-
-				// scrolling.push(scrolling.shift());
-
-				// var lastItem = scrolling[scrolling.length -1];
-				// item.style.top = (lastItem.offsetTop + height) + "px";
-			} ;
-		});
-	}, 1000);
+	function movePostion(array, height) {
+		for (i = 0; i < array.length; i++) {
+			array[i].style.top = array[i].offsetTop - height + "px";
+		}
+	};
 });
