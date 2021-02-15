@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap');
+
+nav div.home {
+	height: min-content;
+	grid-column: 1 / 2;
+	display: grid;
+	grid-template-columns: max-content max-content;
+	justify-content: start;
+	cursor: pointer;
+	font-size: 20px;
+	line-height: 28px;
+	font-family: 'Montserrat', sans-serif;
+	margin: 1em;
+	margin-left: 10%;
+}
+
+.home p {
+	margin: 0;
+	vertical-align: middle;
+}
+
+.home .fixed {
+	font-weight: 500;
+	margin-right: 0.5em;
+}
+
+.home .scroll {
+	font-weight: 400;
+	position: relative;
+	overflow-y: hidden;
+}
+
+.scroll .scrolling{
+	position: absolute;
+}

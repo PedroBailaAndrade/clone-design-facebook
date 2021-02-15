@@ -18,29 +18,6 @@ nav {
     z-index: 1;
 }
 
-nav div.logo {
-	grid-column: 1 / 2;
-	display: grid;
-	grid-template-columns: max-content;
-	justify-content: start;
-	margin-left: 10%;
-}
-
-.logo p {
-	margin: 1em 1em 1em auto;
-	cursor: pointer;
-	font-size: 20px;
-	line-height: 28px;
-	font-family: 'Montserrat', sans-serif;
-	font-weight: 500;
-}
-
-.logo span {
-	font-weight: 400;
-	text-transform: none;
-}
-
-
 nav div.tabs {
 	grid-column: 2 / 3;
 	display: grid;
