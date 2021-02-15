@@ -13,9 +13,13 @@ window.addEventListener('load', function () {
 	width = Math.max(...width);
 	height = Math.max(...height);
 
-	for (i = 0; i < scrolling.length; i++) {
-		scrolling[i].style.top = height*i + "px";
-	}
+	function initialPosition(array) {
+		for (i = 0; i < array.length; i++) {
+			array[i].style.top = height*i + "px";
+		}
+	};
+
+	initialPosition(scrolling);
 
 	scroll.style.height = height + "px";
 	scroll.style.width = width + "px";
@@ -24,8 +28,18 @@ window.addEventListener('load', function () {
 		scrolling = Array.from(scrolling);
 		scrolling.forEach(function(item){
 			item.style.top = (item.offsetTop - height) + "px";
-			if(item.offsetTop == -height) {
-				console.log('oi');
+			if(scrolling[0].offsetTop == -height*scrolling.length) {
+				initialPosition(scrolling);
+				// var lastItemIndex = scrolling.length - 1;
+				// var lastItem = scrolling[lastItemIndex];
+				// var lastItemPosition = lastItem.offsetTop;
+
+				// var firstItem = scrolling[0];
+				// firstItem.style.top = lastItemPosition + height + "px";
+
+
+				// scrolling.push(scrolling.shift());
+
 				// var lastItem = scrolling[scrolling.length -1];
 				// item.style.top = (lastItem.offsetTop + height) + "px";
 			} ;
