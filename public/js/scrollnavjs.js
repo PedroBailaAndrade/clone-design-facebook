@@ -3,16 +3,14 @@ window.addEventListener('load', function () {
 	var scroll = document.getElementsByClassName("scroll")[0];
 	var scrolling = document.getElementsByClassName("scrolling");
 
-	setDimension(scroll, string(width), setWidth(scrolling));
-	setDimension(scroll, string(height), setHeight(scrolling));
+	setWidthDimension(scroll, setWidth(scrolling));
+	setHeightDimension(scroll, setHeight(scrolling));
 
 	initialPosition(scrolling, setHeight(scrolling));
 
 	setInterval(function(){
 			movePostion(scrolling, setHeight(scrolling));
-			if(scrolling[0].offsetTop == - setHeight(scrolling) * scrolling.length) {
-				initialPosition(scrolling, setHeight(scrolling));
-			} ;
+			resetPosition(scrolling);
 	}, 1000);
 
 	function setWidth(array) {
@@ -31,20 +29,31 @@ window.addEventListener('load', function () {
 		return value = Math.max(...values);
 	};
 
-	function setDimension(element, side, size) {
-		element.style.side = size + "px";
-		console.log(element.style.side = size+ "px")
+	function setWidthDimension(element, size) {
+		element.style.width = size + "px";
+	}
+
+	function setHeightDimension(element, size) {
+		element.style.height = size + "px";
 	}
 
 	function initialPosition(array, height) {
 		for (i = 0; i < array.length; i++) {
 			array[i].style.top = height * i + "px";
+			// array[i].aniamte([{ top : height * i + "px"}],{duration: 1000});
 		}
 	};
 
 	function movePostion(array, height) {
 		for (i = 0; i < array.length; i++) {
 			array[i].style.top = array[i].offsetTop - height + "px";
+			// array[i].aniamte([{ top : array[i].offsetTop - height + "px"}],{duration: 1000});
 		}
+	};
+
+	function resetPosition(array) {
+		if(array[0].offsetTop == - setHeight(array) * array.length) {
+			initialPosition(array, setHeight(array));
+		} ;
 	};
 });
