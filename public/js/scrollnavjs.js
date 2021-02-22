@@ -10,7 +10,7 @@ window.addEventListener('load', function () {
 
 	setInterval(function(){
 			movePostion(scrolling, setHeight(scrolling));
-			resetPosition(scrolling);
+			// resetPosition(scrolling);
 	}, 1000);
 
 	function setWidth(array) {
@@ -38,7 +38,7 @@ window.addEventListener('load', function () {
 	}
 
 	function initialPosition(array, height) {
-		for (i = 0; i < array.length; i++) {
+		for (i = 0; i < array.length; i++) {		
 			array[i].style.top = height * i + "px";
 			// array[i].aniamte([{ top : height * i + "px"}],{duration: 1000});
 		}
@@ -46,7 +46,20 @@ window.addEventListener('load', function () {
 
 	function movePostion(array, height) {
 		for (i = 0; i < array.length; i++) {
-			array[i].style.top = array[i].offsetTop - height + "px";
+			const animationframes = [
+			  	{ 
+				    top: array[i].offsetTop + "px",
+			  	},
+			  	{ 
+				    top: array[i].offsetTop - height + "px", 
+			  	}
+			]
+			array[i].animate(animationframes, {
+			    duration: 1000,
+			    fill: 'none',
+			    easing: 'ease',
+			})
+			//array[i].style.top = array[i].offsetTop - height + "px";
 			// array[i].aniamte([{ top : array[i].offsetTop - height + "px"}],{duration: 1000});
 		}
 	};
